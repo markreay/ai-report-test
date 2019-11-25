@@ -1,0 +1,13 @@
+{
+  "name": "test-package",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "accessibility-insights-report": "file:../accessibility-insights-web/package/drop"
+  },
+  "devDependencies": {
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  }
+}
