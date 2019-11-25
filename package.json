@@ -6,6 +6,10 @@
   "dependencies": {
     "accessibility-insights-report": "file:../accessibility-insights-web/package/drop"
   },
+  "scripts": {
+    "build": "webpack",
+    "test": "node dist/main.js"
+  },
   "devDependencies": {
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10"

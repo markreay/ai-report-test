@@ -1,17 +1,39 @@
+import * as fs from "fs";
+import * as path from "path";
 import { reporterFactory } from "accessibility-insights-report";
-import * as fs from 'fs';
 import { scanNoIssues } from "./scan-no-issues";
 import { scanIssues } from "./scan-issues";
 
-const reportOptions = {
-    browserSpec: 'BROWSER_SPEC',
-    browserVersion: 'BROWSER_VERSION',
-    pageTitle: 'Accessibility Insights',
-    description: 'Automated report',
-};
+const outputDirectory = "output";
+if (!fs.existsSync(outputDirectory)) {
+  fs.mkdirSync(outputDirectory);
+}
 
 const reporter = reporterFactory();
-const htmlNoIssues = reporter.fromAxeResult(scanNoIssues, reportOptions).asHTML();
-fs.writeFileSync("scanNoIssues.html", htmlNoIssues);
-const htmlIssues = reporter.fromAxeResult(scanIssues, reportOptions).asHTML();
-fs.writeFileSync("scanIssues.html", htmlIssues);
+
+const files = [
+  {
+    scan: scanNoIssues,
+    name: "scanNoIssues"
+  },
+  {
+    scan: scanIssues,
+    name: "scanIssues"
+  }
+];
+
+files.forEach(({ scan, name }) => {
+  const reportOptions = {
+    browserSpec: "BROWSER_SPEC",
+    browserVersion: "BROWSER_VERSION",
+    pageTitle: "Accessibility Insights",
+    description: "Automated report"
+  };
+
+  const html = reporter.fromAxeResult(scanNoIssues, reportOptions).asHTML();
+
+  const outputName = path.join(outputDirectory, name + ".html");
+  fs.writeFileSync(outputName, html);
+
+  console.log(`Wrote ${outputName}`);
+});

@@ -231,7 +231,7 @@ abbrev@1:
   integrity sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==
 
 "accessibility-insights-report@file:../accessibility-insights-web/package/drop":
-  version "0.0.13"
+  version "0.0.7"
   dependencies:
     applicationinsights-js "^1.0.20"
     axe-core "3.3.2"
