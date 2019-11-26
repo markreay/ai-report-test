@@ -24,13 +24,16 @@ const files = [
 
 files.forEach(({ scan, name }) => {
   const reportOptions = {
-    browserSpec: "BROWSER_SPEC",
-    browserVersion: "BROWSER_VERSION",
-    pageTitle: "Accessibility Insights",
-    description: "Automated report"
+    results: scan,
+    description: "Automated report",
+    scanContext: {
+      browserSpec: "BROWSER_SPEC",
+      browserVersion: "BROWSER_VERSION",
+      pageTitle: "Accessibility Insights",
+    }
   };
 
-  const html = reporter.fromAxeResult(scanNoIssues, reportOptions).asHTML();
+  const html = reporter.fromAxeResult(reportOptions).asHTML();
 
   const outputName = path.join(outputDirectory, name + ".html");
   fs.writeFileSync(outputName, html);
