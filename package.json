@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "accessibility-insights-report": "^0.0.1"
+    "accessibility-insights-report": "../accessibility-insights-web/package/report/drop"
   },
   "scripts": {
     "build": "webpack",

@@ -26,9 +26,9 @@ files.forEach(({ scan, name }) => {
   const reportOptions = {
     results: scan,
     description: "Automated report",
+    serviceName: "Mark's Accessibility Service",
     scanContext: {
-      browserSpec: "BROWSER_SPEC",
-      browserVersion: "BROWSER_VERSION",
+      browserSpec: "MarkBrowser Version 0.0.0.0.0.0.1",
       pageTitle: "Accessibility Insights",
     }
   };
